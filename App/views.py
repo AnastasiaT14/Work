@@ -1,17 +1,25 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import Application, Measurements
-from .serializers import ApplicationSerializer, MeasurementsSerializer
+from .models import Workout, Exercises, Measurements
+from .serializers import WorkoutSerializer, ExercisesSerializer, MeasurementsSerializer
+
+class WorkoutListCreateView(generics.ListCreateAPIView):
+    queryset = Workout.objects.all()
+    serializer_class = WorkoutSerializer
 
 
-class ApplicationListCreateView(generics.ListCreateAPIView):
-    queryset = Application.objects.all()
-    serializer_class = ApplicationSerializer
+class WorkoutDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Workout.objects.all()
+    serializer_class = WorkoutSerializer
+
+class ExercisesListCreateView(generics.ListCreateAPIView):
+    queryset = Exercises.objects.all()
+    serializer_class = ExercisesSerializer
 
 
-class ApplicationDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Application.objects.all()
-    serializer_class = ApplicationSerializer
+class ExercisesDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Exercises.objects.all()
+    serializer_class = ExercisesSerializer
 
 
 class MeasurementsListCreateView(generics.ListCreateAPIView):

@@ -1,10 +1,16 @@
 from rest_framework import serializers
-from .models import Application, Measurements
+from .models import Workout, Exercises, Measurements
 
 
-class ApplicationSerializer(serializers.ModelSerializer):
+class WorkoutSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Application
+        model = Workout
+        fields = "__all__"
+
+
+class ExercisesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Exercises
         fields = "__all__"
 
 
